@@ -1,0 +1,26 @@
+flowchart LR
+    subgraph prep["Steps 1 to 4: prepare"]
+        direction TB
+        S1["1. Goal and metric"] --> S2["2. Get the data"] --> S3["3. Train-test split"] --> S4["4. Explore and clean"]
+    end
+    prep --> B["Steps 5 to 8: build the models"]
+    B --> M1["Random baseline"]
+    B --> M2["Rule-based baseline"]
+    B --> M3["Logistic regression"]
+    B -.-> M4["Optional versions"]
+    M1 --> T["9. Score every model<br>on the training and the test set"]
+    M2 --> T
+    M3 --> T
+    M4 -.-> T
+
+    classDef step fill:#dbe7fb,stroke:#dbe7fb,color:#1f2937
+    classDef build fill:#dbe7fb,stroke:#3b6fd8,stroke-width:2px,color:#1f2937
+    classDef model fill:#e3f3e5,stroke:#3c9a4a,stroke-width:2px,color:#1f2937
+    classDef optional fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,stroke-dasharray:4 3,color:#374151
+    classDef test fill:#fde2e2,stroke:#d84040,stroke-width:2px,color:#1f2937
+    class S1,S2,S3,S4 step
+    class B build
+    class M1,M2,M3 model
+    class M4 optional
+    class T test
+    style prep fill:#f7f7f8,stroke:#c7c9cd,color:#111827
